@@ -22,8 +22,13 @@ run from knockd by append this script to "start_command" or "command"
 example:
 
 [opencloseSMTP]
+
         one_time_sequences = /etc/knockd.sequences
+
         seq_timeout        = 15
+
         start_command      = iptables -A INPUT -s %IP% -p tcp --dport 25 -j ACCEPT; ~username/bin/send-knockd-one-time-sequences-to-twitter  your_normal_username
+
         cmd_timeout        = 5
+
         stop_command       = iptables -D INPUT -s %IP% -p tcp --dport 25 -j ACCEPT
